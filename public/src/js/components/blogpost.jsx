@@ -6,41 +6,38 @@ var browserHistory = require('react-router').browserHistory;
 var AppStore = require('../stores/appStore');
 var Dispatcher = require('../dispatchers/appDispatcher');
 
-// get register function
-var Register = React.createClass({
+// get blog function
+var BlogPost = React.createClass({
   getInitialState : function(){
     return {
-      username: String,
-      password: String,
-      status: AppStore.getRegister(),
+      title: String,
+      content: String,
+      status: AppStore.getBlogPost(),
   }
 },
 // onchange as the field changes the information is being saved
-getUsernameData : function(e){
+getTitleData : function(e){
   this.setState({
-    username : e.target.value
+    title : e.target.value
   });
   },
-getPasswordData : function(e){
+getContentData : function(e){
   this.setState({
-    password : e.target.value
+    content : e.target.value
   });
 },
 
-// Gets the username and password and tells the AppStore to register
-onClickRegister : function(e){
+// Gets the title and content and tells the AppStore to post blog
+onClickBlogPost : function(e){
   console.log('click');
   Dispatcher.dispatch({
         data : {
-          username : this.state.username,
-          password : this.state.password
+          title : this.state.title,
+          content : this.state.content
         },
-        action : 'register'
+        action : 'blogpost'
       })
-
-// This determins whether the user is registered or not
-
-      AppStore.on("register", function() {
+      AppStore.on("blogpost", function() {
                 this.setState({
                   status: true
                 })
@@ -50,23 +47,21 @@ onClickRegister : function(e){
           e.preventDefault();
 
 
-
-  },
+},
   render: function() {
     return (
 <div>
-  <h4>Register:</h4>
+  <h4>Post a Blog:</h4>
     <div className="card-panel hoverable">
       <div className="container">
         <div className="col m9">
           <form>
-            Username:<br/>
-              <input type="text" name="username" onChange={this.getUsernameData}/>
+            Title:<br/>
+          <input type="text" name="title"/>
                 <br/>
-                  Password:<br/>
-              <input type="text" name="password" onChange={this.getPasswordData}/>
+                  Content:<br/>
+                <textarea type="text" name="content"></textarea>
               <br/><br/>
-            <input type="submit" value="Submit" onClick={this.onClickRegister}/>
           </form>
         </div>
       </div>
@@ -76,4 +71,4 @@ onClickRegister : function(e){
     )
   }
 });
-module.exports = Register;
+module.exports = BlogPost;

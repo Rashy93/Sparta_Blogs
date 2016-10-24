@@ -14,7 +14,7 @@ var User = React.createClass({
             </div>
             <div className="card-reveal">
               <span className="card-title grey-text text-darken-4">{this.props.user.userName}<i className="material-icons right">close</i></span>
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+              <p>{this.props.user.userLink}</p>
             </div>
           </div>
 

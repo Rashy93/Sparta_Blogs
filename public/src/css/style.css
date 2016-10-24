@@ -9,10 +9,9 @@ html {
  #post {
    border-radius: 2px;
    display: inline-block;
-   height: 300px;
    margin: 1rem;
    position: relative;
-   width: 300px;
+   width: 41%;
  }
  div#app > div{
    display: flex;

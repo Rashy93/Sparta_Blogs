@@ -9,7 +9,7 @@ var Footer = require("./components/footer.jsx");
 var Button = require("./components/example.jsx");
 var Register = require("./components/register.jsx");
 var Login = require("./components/login.jsx");
-
+var BlogPost = require("./components/blogpost.jsx");
 //setting up react routes
 var Router = require('react-router').Router
 var Route = require('react-router').Route
@@ -27,6 +27,7 @@ var Body = React.createClass({
           <Route path="/" component={Main}>
             <Route path="register" component={Register}/>
               <Route path="login" component={Login}/>
+                <Route path="blogpost" component={BlogPost}/>
             <Route path="posts" component={PostList}/>
             <Route path="users" component={UserList}/>
           </Route>
